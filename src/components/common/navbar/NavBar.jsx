@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import dlogo from "../navbar/dlogo.png"
 import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 
 const navItems = [
   { id: 1, name: "Home", url: "introduction" },
@@ -35,6 +36,12 @@ const menu = navItems.map((item) => (
     </Link>
   </li>
 ));
+
+// Animation variants for the mobile dropdown menu
+const menuVariant = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } },
+};
 
 const NavBar = () => {
   const [position, setPosition] = useState(0);
@@ -75,12 +82,16 @@ const NavBar = () => {
                 />
               </svg>
             </div>
-            <ul
+            {/* Animated mobile menu */}
+            <motion.ul
               tabIndex={0}
-              className={`menu menu-lg dropdown-content rounded-box z-1 mt-3 w-lvw p-2 shadow font-semibold flex-nowrap bg-white text-black`}
+              className="menu menu-lg dropdown-content rounded-box z-10 mt-3 w-56 p-4 shadow font-semibold flex-nowrap bg-white text-black"
+              variants={menuVariant}
+              initial="hidden"
+              animate="visible"
             >
               {menu}
-            </ul>
+            </motion.ul>
           </div>
 
           <Link
