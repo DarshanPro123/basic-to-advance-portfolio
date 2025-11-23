@@ -8,35 +8,61 @@ import Profession from "../components/profession/Profession";
 import HappyClients from "../components/happyClients/HappyClients";
 import Testimonial from "../components/testimonial/Testimonial";
 import Contact from "../components/contact/Contact";
+import ParticleBackground from "../components/common/ParticleBackground";
 import "../../index.css";
 
 const Home = () => {
   return (
     <div className="relative">
-      <div className="introduction-profile-background">
-        <div className="content">
+      {/* Hero Section with Interactive Particles */}
+      <div className="introduction-profile-background relative">
+        <ParticleBackground variant="hero" />
+        <div className="content relative z-10">
           <Introduction />
           <Profile />
         </div>
       </div>
+
+      {/* Work Process Section */}
       <div className="bg-soft-white pt-30">
         <WorkProcess />
       </div>
-      <Portfolio />
+
+      {/* Portfolio Section with Floating Particles */}
+      <div className="relative">
+        <ParticleBackground variant="portfolio" />
+        <div className="relative z-10">
+          <Portfolio />
+        </div>
+      </div>
+
+      {/* Work Together Section */}
       <div className="bg-gray-900">
         <WorkTogether />
       </div>
-      {/* <div className="blog-background">
-        <Blog />
-      </div> */}
-      <div className="bg-soft-white">
-        <Profession />
+
+      {/* Profession/Services Section with Elegant Particles */}
+      <div className="bg-soft-white relative">
+        <ParticleBackground variant="services" />
+        <div className="relative z-10">
+          <Profession />
+        </div>
       </div>
+
+      {/* Happy Clients & Testimonials */}
       <HappyClients />
       <Testimonial />
-      <Contact />
+
+      {/* Contact Section with Starfield Effect */}
+      <div className="relative">
+        <ParticleBackground variant="contact" />
+        <div className="relative z-10">
+          <Contact />
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Home;
+

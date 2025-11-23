@@ -1,14 +1,13 @@
-import logo from "../../../assets/logo.png";
+import dlogo from "../navbar/dlogo.png";
 
 /* Footer nabLinks */
 const navItems = [
-  { id: 1, name: "Home", url: "Home" },
-  { id: 2, name: "About", url: "About" },
-  { id: 3, name: "Process", url: "Process" },
-  { id: 4, name: "Portfolio", url: "Portfolio" },
-  { id: 5, name: "Blog", url: "Blog" },
-  { id: 6, name: "Services", url: "Services" },
-  { id: 7, name: "Contact", url: "Contact" },
+  { id: 1, name: "Home", url: "introduction" },
+  { id: 2, name: "About", url: "profile" },
+  { id: 3, name: "Process", url: "work-process" },
+  { id: 4, name: "Portfolio", url: "portfolio" },
+  { id: 5, name: "Services", url: "services" },
+  { id: 6, name: "Contact", url: "contact" },
 ];
 const copyrightYear = new Date().getFullYear();
 
@@ -17,9 +16,9 @@ const Footer = () => {
     <div className="pt-25 md:pt-40 content max-2xl:px-3">
       <div className="flex max-md:flex-col justify-between mx-0 items-center h-full w-full text-neutral-200">
         <a href="#" className="flex items-center border-0">
-          <img src={logo} className="h-8 sm:h-14 rounded-2xl" alt="logo" />
+          <img src={dlogo} className="h-8 sm:h-14 rounded-2xl" alt="logo" />
           <p className="text-3xl sm:text-[32px] my-auto ms-[12px] font-semibold">
-            Brooklyn
+            Darshan
           </p>
         </a>
         <div className="mx-7 max-md:my-7 text-center">
@@ -35,17 +34,17 @@ const Footer = () => {
           ))}
         </div>
         <p className="text-[12px] sm:text-[16px]">
-          Copyright &copy; {copyrightYear} Picto.
+          Copyright &copy; {copyrightYear} Darshan.
         </p>
       </div>
       <p className="text-white text-center max-xs:text-[12px] max-md:text-[14px] w-full py-10">
         Developed with ❤️ by{" "}
         <a
-          href="https://www.themewagon.com"
+          href="https://github.com/DarshanPro123"
           className="underline font-bold"
           target="_blank"
         >
-          ThemeWagon
+          Darshan Panchal
         </a>
       </p>
     </div>
@@ -53,3 +52,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

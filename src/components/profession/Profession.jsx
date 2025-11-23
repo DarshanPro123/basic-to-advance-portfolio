@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Roles from "./Roles";
 
 const rolesData = [
@@ -27,7 +28,13 @@ const Profession = () => {
       className="content grid md:grid-cols-2 max-xxl:px-4 xxl:px-2 py-10 md:py-15 lg:py-37.5"
       id="services"
     >
-      <div className="flex flex-col justify-between h-fit md:pe-8 lg:pe-35.75 max-md:text-center my-auto">
+      <motion.div
+        className="flex flex-col justify-between h-fit md:pe-8 lg:pe-35.75 max-md:text-center my-auto"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <p className="section-title max-md:text-center">What I do?</p>
         <div className="mt-6 text-[14px]">
           <p className="text-xs sm:text-lg font-normal text-gray-400 mb-4">
@@ -47,14 +54,33 @@ const Profession = () => {
         >
           Say Hello!
         </a>
-      </div>
-      <div className="">
+      </motion.div>
+      <motion.div
+        className=""
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         {rolesData.map((role, index) => (
-          <Roles role={role} key={index} />
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.6,
+              delay: 0.1 * index,
+              ease: "easeOut",
+            }}
+          >
+            <Roles role={role} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
 
 export default Profession;
+
