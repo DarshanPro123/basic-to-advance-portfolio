@@ -26,20 +26,38 @@ const informationSummaryData = [
 const Introduction = () => {
   const [displayedText, setDisplayedText] = useState("");
   const fullText = "Darshan Panchal";
-  const typingSpeed = 150; // milliseconds per character
+  const typingSpeed = 150; 
 
   useEffect(() => {
     let currentIndex = 0;
-    const typingInterval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setDisplayedText(fullText.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, typingSpeed);
+    let isDeleting = false;
+    let timeoutId;
 
-    return () => clearInterval(typingInterval);
+    const tick = () => {
+      if (!isDeleting) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        if (currentIndex < fullText.length) {
+          currentIndex++;
+          timeoutId = setTimeout(tick, typingSpeed);
+        } else {
+          isDeleting = true;
+          timeoutId = setTimeout(tick, 1500); // Pause at full name
+        }
+      } else {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        if (currentIndex > 0) {
+          currentIndex--;
+          timeoutId = setTimeout(tick, typingSpeed / 2); // Erase faster
+        } else {
+          isDeleting = false;
+          timeoutId = setTimeout(tick, 500); // Pause before re-typing
+        }
+      }
+    };
+
+    tick();
+
+    return () => clearTimeout(timeoutId);
   }, []);
 
   // Animation variants for container
